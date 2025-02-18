@@ -16,7 +16,7 @@
         function playGame() {
             for (let i = 1; i < 6; i++) {
                 let computerChoice = getComputerChoice();
-                let humanChoice = getHumanChoice();
+                let humanChoice = getHumanChoice(i);
                 let outcome = playRound(humanChoice, computerChoice);
                 console.log("Round " + i + ": " + outcome);
             }
@@ -74,8 +74,8 @@
                 return "Scissors";
         }
  
-        function getHumanChoice() {
-            let input = prompt("Please enter your choice:");
+        function getHumanChoice(i) {
+            let input = prompt("Rock, Paper or Scissors - Round " + i + " - Please enter your choice:");
             let letterOneCap = input.charAt(0).toUpperCase();
             let restOfWordLower = input.slice(1).toLowerCase();
             return letterOneCap + restOfWordLower;
