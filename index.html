@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+        playGame();    
+        console.log("Final Score: You - " + humanScore + "  /  Computer - " + computerScore);
+        console.log("Thanks for Playing");
+        
+        function playGame() {
+            for (let i = 1; i < 6; i++) {
+                let computerChoice = getComputerChoice();
+                let humanChoice = getHumanChoice();
+                let outcome = playRound(humanChoice, computerChoice);
+                console.log("Round " + i + ": " + outcome);
+            }
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            if (computerChoice == "Rock") {
+                if (humanChoice == "Rock") {
+                    return("Tie! You both chose " + computerChoice + ".");
+                } else if (humanChoice == "Paper") {
+                    humanScore++;
+                    return("You win! " + humanChoice + " beats " + computerChoice + ".");
+                } else if (humanChoice == "Scissors") {
+                    computerScore++;
+                    return("You lose! " + computerChoice + " beats " + humanChoice + ".");
+                }
+                    computerScore++;
+                    return("User error. Take the L!");
+
+            } else if (computerChoice == "Paper") {
+                if (humanChoice == "Paper") {
+                    return("Tie! You both chose " + computerChoice + ".");
+                } else if (humanChoice == "Scissors") {
+                    humanScore++;
+                    return("You win! " + humanChoice + " beats " + computerChoice + ".");
+                } else if (humanChoice == "Rock") {
+                    computerScore++;
+                    return("You lose! " + computerChoice + " beats " + humanChoice + ".");
+                }
+                    computerScore++;
+                    return("User error. Take the L!");
+
+            } else {
+                if (humanChoice == "Scissors") {
+                    return("Tie! You both chose " + computerChoice + ".");
+                } else if (humanChoice == "Rock") {
+                    humanScore++;
+                    return("You win! " + humanChoice + " beats " + computerChoice + ".");
+                } else if (humanChoice == "Paper") {
+                    computerScore++;
+                    return("You lose! " + computerChoice + " beats " + humanChoice + ".");
+                }
+                    computerScore++;    
+                    return("User error. Take the L!");
+            }
+        }
+
+        function getComputerChoice() {
+            let rando = Math.random();
+            if (rando <= 0.33) {
+                return "Rock";
+            } else if (rando <=0.66) {
+                return "Paper";
+            }
+                return "Scissors";
+        }
+ 
+        function getHumanChoice() {
+            let input = prompt("Please enter your choice:");
+            let letterOneCap = input.charAt(0).toUpperCase();
+            let restOfWordLower = input.slice(1).toLowerCase();
+            return letterOneCap + restOfWordLower;
+        }
+     
+    </script>
+</body>
+</html>
